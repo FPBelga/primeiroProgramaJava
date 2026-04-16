@@ -121,7 +121,7 @@ public class Aluno extends Pessoa{
 		double somaNotas = 0.0;
 
 		for (Disciplina disciplina : disciplinas) {
-			somaNotas += disciplina.getMediaNotas();
+			somaNotas += disciplina.getNota();
 		}
 
 		return somaNotas / disciplinas.size();
@@ -129,10 +129,10 @@ public class Aluno extends Pessoa{
 
 	public boolean getAlunoAprovado() {
 		double media = this.getMediaNota();
-		if (media >= 70) {
+		if (media >= 70) {/*APROVADO*/
 			return true;
 		} else {
-			return false;
+			return false; /*REPROVADO*/
 		}
 	}
 

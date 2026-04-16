@@ -4,47 +4,35 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Disciplina {
-	
-	/*Cada disciplina terá 4 notas o ano todo*/
-	public double[] nota = new double[4];
+
+	/* Cada disciplina terá 4 notas o ano todo */
+	public double nota;
 	private String disciplina;
 
-	
-
-	public double[] getNota() {
+	public double getNota() {
 		return nota;
 	}
 
-	public void setNota(double[] nota) {
+	public void setNota(double nota) {
 		this.nota = nota;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Disciplina [nota=");
-		builder.append(nota);
-		builder.append(", disciplina=");
-		builder.append(disciplina);
-		builder.append("]");
-		return builder.toString();
-	}
-
-	
-	/**
-	 * @return the disciplina
-	 */
 	public String getDisciplina() {
 		return disciplina;
 	}
 
+	public void setDisciplina(String disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	@Override
+	public String toString() {
+		return "Disciplina [nota=" + nota + ", disciplina=" + disciplina + "]";
+	}
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + Arrays.hashCode(nota);
-		result = prime * result + Objects.hash(disciplina);
-		return result;
+		return Objects.hash(disciplina, nota);
 	}
 
 	@Override
@@ -56,26 +44,11 @@ public class Disciplina {
 		if (getClass() != obj.getClass())
 			return false;
 		Disciplina other = (Disciplina) obj;
-		return Objects.equals(disciplina, other.disciplina) && Arrays.equals(nota, other.nota);
-	}
-
-	/**
-	 * @param disciplina the disciplina to set
-	 */
-	public void setDisciplina(String disciplina) {
-		this.disciplina = disciplina;
+		return Objects.equals(disciplina, other.disciplina)
+				&& Double.doubleToLongBits(nota) == Double.doubleToLongBits(other.nota);
 	}
 	
-	public double getMediaNotas() {
-		
-		double somaTotal = 0;
-		
-		for (int pos = 0 ; pos < nota.length ; pos ++) {
-			
-			somaTotal += nota[pos];
-		}
-		
-		return somaTotal / nota.length;
-	}
+	
+	
 
 }
